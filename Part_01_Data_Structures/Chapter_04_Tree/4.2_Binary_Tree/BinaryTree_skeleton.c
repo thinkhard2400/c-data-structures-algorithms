@@ -1,19 +1,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// 이진 트리 노드 구조체
 typedef struct tagBinaryTreeNode {
-    struct tagBinaryTreeNode* Left;   // 왼쪽 자식
-    struct tagBinaryTreeNode* Right;  // 오른쪽 자식
-    char Data;                        // 데이터
+    struct tagBinaryTreeNode* Left;
+    struct tagBinaryTreeNode* Right;
+    char Data;
 } BinaryTreeNode;
 
-// 노드 생성
 BinaryTreeNode* CreateNode(char newData) {
-    // TODO: 동적 할당 후 Data 설정 및 Left, Right 포인터 NULL 초기화
+    BinaryTreeNode* newNode = (BinaryTreeNode*)malloc(sizeof(BinaryTreeNode));
+    if (newNode == NULL) return NULL;
+    newNode->Left = NULL;
+    newNode->Right = NULL;
+    newNode->Data = newData;
+    return newNode;
 }
 
-// 트리 메모리 해제 (후위 순회 방식)
 void DestroyTree(BinaryTreeNode* node) {
-    // TODO: 왼쪽 자식, 오른쪽 자식을 재귀적으로 먼저 해제한 후 자신을 free
+    if (node == NULL) return;
+    DestroyTree(node->Left);
+    DestroyTree(node->Right);
+    free(node);
+}
+
+// 전위 순회 (Pre-order: 루트 -> Left -> Right)
+void PreorderPrintTree(BinaryTreeNode* node) {
+    // TODO: node가 NULL이면 종료
+    // 1. 현재 노드(루트) 데이터 출력
+    // 2. 왼쪽 서브트리 재귀 호출
+    // 3. 오른쪽 서브트리 재귀 호출
+}
+
+// 중위 순회 (In-order: Left -> 루트 -> Right)
+void InorderPrintTree(BinaryTreeNode* node) {
+    // TODO: node가 NULL이면 종료
+    // 1. 왼쪽 서브트리 재귀 호출
+    // 2. 현재 노드(루트) 데이터 출력
+    // 3. 오른쪽 서브트리 재귀 호출
+}
+
+// 후위 순회 (Post-order: Left -> Right -> 루트)
+void PostorderPrintTree(BinaryTreeNode* node) {
+    // TODO: node가 NULL이면 종료
+    // 1. 왼쪽 서브트리 재귀 호출
+    // 2. 오른쪽 서브트리 재귀 호출
+    // 3. 현재 노드(루트) 데이터 출력
 }
