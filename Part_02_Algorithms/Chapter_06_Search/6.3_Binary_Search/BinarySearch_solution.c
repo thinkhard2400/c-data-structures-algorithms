@@ -50,6 +50,5 @@ int main(void) {
     } else {
         printf("탐색 실패: %d은(는) 배열에 존재하지 않습니다.\n", non_exist_target);
     }
-
     return 0;
 }
